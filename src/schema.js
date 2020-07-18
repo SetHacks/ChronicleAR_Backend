@@ -1,5 +1,6 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema } = require('graphql');
-// const { resolveFieldValueOrError } = require('graphql/execution/execute');
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList } = require('graphql');
+// const { resolveFieldValueOrError } = require('graphql/execution/execute'); 
+const { getBook } = require('./services/api.service.js');
 
 const UserType = new GraphQLObjectType({
     name: 'User',
@@ -11,14 +12,25 @@ const UserType = new GraphQLObjectType({
     })
 });
 
+const BookType = new GraphQLObjectType({
+    name: 'Book',
+    fields: () => ({
+        title: { type: new GraphQLList(GraphQLString) }
+    })
+});
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     fields: {
-        user: { 
-            type: UserType,
-            args: { id: { type: GraphQLString }},
-            resolve(parent, args) {
-
+        book: { 
+            type: BookType,
+            args: { title: { type: GraphQLString }},
+            resolve(root, args) {
+                return getBook(args.title).then(response => {
+                    const result = response.GoodreadsResponse.search[0].results[0].work[0].best_book[0];
+                    console.log(result)
+                    return result
+                });
             }
         }
     }
