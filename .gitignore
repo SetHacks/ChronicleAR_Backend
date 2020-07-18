@@ -27,3 +27,4 @@ coverage
 benchmarks/graphs
 
 # Json Key
+APIKey.json
