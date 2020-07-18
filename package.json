@@ -1,0 +1,28 @@
+{
+  "name": "chroniclear_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SetHacks/ChronicleAR_Backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SetHacks/ChronicleAR_Backend/issues"
+  },
+  "homepage": "https://github.com/SetHacks/ChronicleAR_Backend#readme",
+  "dependencies": {
+    "@types/express": "^4.17.7",
+    "@types/node": "^14.0.23",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
