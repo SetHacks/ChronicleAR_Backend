@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/SetHacks/ChronicleAR_Backend#readme",
   "dependencies": {
+    "@google-cloud/vision": "^2.1.1",
     "express": "^4.17.1"
   },
   "devDependencies": {
