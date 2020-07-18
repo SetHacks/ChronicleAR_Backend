@@ -1,4 +1,5 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt } = require('graphql');
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema } = require('graphql');
+// const { resolveFieldValueOrError } = require('graphql/execution/execute');
 
 const UserType = new GraphQLObjectType({
     name: 'User',
@@ -7,13 +8,22 @@ const UserType = new GraphQLObjectType({
         name: { type: GraphQLString },
         username: { type: GraphQLString },
         email: { type: GraphQLString },
-
     })
 });
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     fields: {
-        user: { }
+        user: { 
+            type: UserType,
+            args: { id: { type: GraphQLString }},
+            resolve(parent, args) {
+
+            }
+        }
     }
+});
+
+module.exports = new GraphQLSchema({
+    query: RootQuery
 });
