@@ -8,10 +8,10 @@ async function quickstart() {
     });
   
     // Performs label detection on the image file
-    const [result] = await client.labelDetection('test.png');
-    const labels = result.labelAnnotations;
-    console.log('Labels:');
-    labels.forEach(label => console.log(label.description));
+    const [result] = await client.textDetection('hpps_cover.jpg');
+    const labels = result.textAnnotations;
+    console.log('Text:');
+    labels.forEach(text => console.log(text.description));
 }
 
 quickstart();
