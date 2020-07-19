@@ -53,6 +53,7 @@ const RootQuery = new GraphQLObjectType({
             type: BookType,
             args: { imgBinary: { type: GraphQLString }},
             resolve(root, args) {
+                console.log('recieved query')
                 return getBookData(args.imgBinary)
             }
         }
