@@ -2,8 +2,8 @@ const { VISION_ROOT_URL, GOOGLE_API_KEY } = require('../config.js');
 
 const axios = require('axios');
 
-const fetchAnnotations = binaryImage => 
-    axios.post(`${VISION_ROOT_URL}?key=${GOOGLE_API_KEY}`, {
+const fetchAnnotations = async(binaryImage) => {
+    const response = await axios.post(`${VISION_ROOT_URL}?key=${GOOGLE_API_KEY}`, {
         "requests": [
             {
                 "image": {
@@ -18,8 +18,9 @@ const fetchAnnotations = binaryImage =>
         ]
 
     }) 
-    .then(response => response.data.responses[0].textAnnotations)
-
+    console.log(response)
+    return response.data.responses[0].textAnnotations[0].description.replace(/\n/g,' ');
+}
 
 module.exports = {
     fetchAnnotations

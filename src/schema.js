@@ -1,5 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLID } = require('graphql');
 const { fetchBook } = require('./services/goodreads.service.js');
+const { fetchAnnotations } = require('./services/vision.services.js');
 
 //xml nests children in an array regardless if there is only one 
 const getXML = key => obj => obj[key][0]; 
@@ -36,14 +37,20 @@ const AuthorType = new GraphQLObjectType({
     })
 });
 
+const getBookData = async(imgBinary) => {
+    const book_title = await fetchAnnotations(imgBinary);
+    const book_data = await fetchBook(book_title);
+    return book_data;
+}
+
 const RootQuery = new GraphQLObjectType({
     name: 'RootQuery',
     fields: {
         book: { 
             type: BookType,
-            args: { title: { type: GraphQLString }},
+            args: { imgBinary: { type: GraphQLString }},
             resolve(root, args) {
-                return fetchBook(args.title);
+                return getBookData(args.imgBinary)
             }
         }
     }

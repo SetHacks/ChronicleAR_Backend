@@ -4,12 +4,11 @@ const schema = require('./schema.js');
 
 const { fetchAnnotations } = require('./services/vision.services.js');
 
-const fs = require('fs')
-const imgFile = fs.readFileSync('src/book2.png')
-const encoded = Buffer.from(imgFile).toString('base64')
-
-fetchAnnotations(encoded)
-.then(a => console.log(a))
+// const fs = require('fs')
+// const imgFile = fs.readFileSync('src/book2.png')
+// const encoded = Buffer.from(imgFile).toString('base64')
+// fetchAnnotations(encoded)
+// .then(a => console.log(a))
 
 const app = express();
 
