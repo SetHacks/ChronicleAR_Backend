@@ -2,16 +2,10 @@ const { ROOT_URL, DEV_KEY } = require('../config.js');
 
 const util = require('util');
 const xml2js = require('xml2js');
-const axios = require('axios');
 const fetch = require('node-fetch')
 const Dataloader = require('dataloader');
 
 const parseXML = util.promisify(xml2js.parseString);
-
-// const getBook = title => fetch(`${ROOT_URL}search.xml?key=${DEV_KEY}&q=${encodeURI(title)}`)
-//     .then(response => response.text())
-//     .then(parseXML)
-
 
 //Fetch data (search by keyword, find id, then query again for book)
 const fetchBook = async(search_query) => {

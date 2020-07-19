@@ -1,6 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLSchema, GraphQLList, GraphQLID } = require('graphql');
-// const { resolveFieldValueOrError } = require('graphql/execution/execute'); 
-const { fetchBook } = require('./services/api.service.js');
+const { fetchBook } = require('./services/goodreads.service.js');
 
 //xml nests children in an array regardless if there is only one 
 const getXML = key => obj => obj[key][0]; 
