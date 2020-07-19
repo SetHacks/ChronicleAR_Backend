@@ -28,8 +28,6 @@ const fetchBook = async(search_query) => {
         .then(reponse => reponse.GoodreadsResponse.book[0])
 }
 
-
-
 module.exports = {
     fetchBook
 }
