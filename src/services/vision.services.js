@@ -18,8 +18,7 @@ const fetchAnnotations = async(binaryImage) => {
         ]
 
     }) 
-    console.log(response)
-    return response.data.responses[0].textAnnotations[0].description.replace(/\n/g,' ');
+    return response.data.responses;
 }
 
 module.exports = {

@@ -38,8 +38,11 @@ const AuthorType = new GraphQLObjectType({
 });
 
 const getBookData = async(imgBinary) => {
-    const book_title = await fetchAnnotations(imgBinary);
-    const book_data = await fetchBook(book_title);
+    const annotations = await fetchAnnotations(imgBinary);
+
+    const search_query = annotations[0].textAnnotations[0].description.replace(/\n/g,' ');
+
+    const book_data = await fetchBook(search_query);
     return book_data;
 }
 
